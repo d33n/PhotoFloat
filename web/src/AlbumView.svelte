@@ -36,32 +36,26 @@
 		top: 2.5em;
 		padding: 1em;
 	}
-	#photo-view {
-		position: absolute;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        padding: 0 !important;
-        text-align: center;
+	#subalbums {
+		clear: both;
+		padding-top: 1.5em;
 	}
 </style>
 
-<p>Albums from {currentAlbum.path} go here:</p>
 <div id='album-view'>
 	<div id='thumbnails'>
+	{#if currentAlbum.media}
+	<p>Media:</p>
+		{#each currentAlbum.media as media}
+		<Media media={media}/>
+		{/each}
+	{/if}
+	</div>
+
+	<div id='subalbums'>
+		<p>Subalbums of {currentAlbum.path}:</p>
 		{#each displayAlbums as album}
 		<Album {album} parent={currentAlbum} path={generateAlbumPath(album)}/>
 		{/each}
 	</div>
 </div>
-
-{#if currentAlbum.media}
-<p>Media:</p>
-<div id='photo-view'>
-	<div id='thumbnails'>
-		{#each currentAlbum.media as media}
-		<Media media={media}/>
-		{/each}
-	</div>
-</div>
-{/if}
