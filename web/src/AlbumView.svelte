@@ -47,7 +47,7 @@
 	{#if currentAlbum.media}
 	<p>Media:</p>
 		{#each currentAlbum.media as media}
-		<Media media={media}/>
+		<Media media={media} parent={currentAlbum}/>
 		{/each}
 	{/if}
 	</div>

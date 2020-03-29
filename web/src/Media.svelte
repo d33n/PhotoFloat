@@ -2,11 +2,13 @@
     import { onMount } from 'svelte';
     import { thumbnailCachePath } from './hashing.js';
     export let media = {};
+    export let parent = {};
+    export let previewSize = 'smallest';
 
     let previewImage = '/assets/loading.gif';
 
     async function loadPreviewImage() {
-        previewImage = thumbnailCachePath(media);
+        previewImage = thumbnailCachePath(media, previewSize);
     };
 
     onMount(() => {
@@ -15,7 +17,7 @@
 </script>
 
 <style>
-    #media-preview {
+    #media-thumb {
         float: left;
         display: block;
         text-align: center;
@@ -26,7 +28,7 @@
     }
 </style>
 
-<div id='media-preview'>
+<a href={'/view/' + parent.path + '/' + media.name} id='media-thumb'>
     <img title={media.name} alt={media.name} src={previewImage}/>
     <p>{media.name}</p>
-</div>
+</a>
