@@ -11,6 +11,18 @@
         previewImage = thumbnailCachePath(media, previewSize);
     };
 
+    function getCSSSylte() {
+        if (previewSize == 'smallest') {
+            return '';
+        }
+
+        if (media.size[0] > media.size[1]) {
+            return "width: 100%; height: auto;";
+        }
+
+        return "width: auto; height: 100%;";
+    };
+
     onMount(() => {
         loadPreviewImage();
     });
@@ -24,5 +36,5 @@
 </script>
 
 <a href={'/view/' + parent.path + '/' + media.name}>
-    <img title={media.name} alt={media.name} src={previewImage}/>
+    <img title={media.name} alt={media.name} src={previewImage} style={getCSSSylte()}/>
 </a>

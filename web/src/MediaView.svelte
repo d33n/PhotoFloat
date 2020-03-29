@@ -39,10 +39,12 @@
         text-align: center;
     }
     #album-media {
+        float: left;
         position: absolute;
         height: 153px;
         width: 100%;
         bottom: 0;
+        left: 0;
         top: auto !important;
         overflow-x: auto;
         overflow-y: hidden;
