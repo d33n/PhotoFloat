@@ -35,7 +35,7 @@
 <div>
 {#each navbar as link}
 {#if link.name != 'Photos'}
-»
+&nbsp»
 {/if}
 <a href={link.path}>{link.name}</a>
 {/each}
