@@ -6,8 +6,10 @@
 	import MediaViewStore, { mediaRoute } from './MediaViewStore.svelte';
 	import ErrorPage from './ErrorPage.svelte';
 	import Styles from './Styles.svelte';
+	import Navbar from './Navbar.svelte';
 
 	let currentPage;
+	let currentPath;
 
 	function albums(ctx, next) {
 		currentPage = AlbumView;
@@ -23,6 +25,12 @@
 		currentPage = ErrorPage;
 	}
 
+	function navigate(ctx, next) {
+		currentPath = ctx.canonicalPath;
+		next(ctx);
+	}
+
+	router('*', navigate);
 	router('/', '/albums');
 	router('/albums', albums);
 	router('/albums/:album*', albums);
@@ -32,4 +40,5 @@
 	router.start();
 </script>
 
+<Navbar {currentPath} />
 <svelte:component this={currentPage}/>

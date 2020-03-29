@@ -9,7 +9,7 @@
     let selectedMedia = null;
 
     function loadMediaFromAlbum() {
-        for  (let m of currentAlbum.media) {
+        for (let m of currentAlbum.media) {
             if (m.name == mediaPath) {
                 selectedMedia = m;
             }
