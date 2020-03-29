@@ -9,10 +9,12 @@
     let selectedMedia = null;
 
     function loadMediaFromAlbum() {
+        let i = 0;
         for (let m of currentAlbum.media) {
             if (m.name == mediaPath) {
                 selectedMedia = m;
             }
+            i++;
         }
     };
 
@@ -27,42 +29,37 @@
 </script>
 
 <style>
+    #media-container {
+        width: 100%;
+    }
     #media-viewer {
-        position: absolute;
-        bottom: 150px;
-        top: 1.75em;
-        overflow: hidden;
-        margin-bottom: 0.5em;
-        background-color: #111111;
-        left: 0;
-        right: 0;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
     #album-media {
-        float: left;
         position: absolute;
-        height: 153px;
-        width: 100%;
-        bottom: 0;
         left: 0;
-        top: auto !important;
+        bottom: 0;
+        width: 100%;
+        height: 153px;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
-        padding: 0 !important;
         text-align: center;
     }
 </style>
 
 {#if selectedMedia}
-<div id='media-viewer'>
-<Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
-</div>
-<div id='album-media'>
-    <div id='thumbnails'>
-    {#each currentAlbum.media as media}
-    <Media {media} parent={currentAlbum} />
-    {/each}
+<div id='media-container'>
+    <div id='media-viewer'>
+        <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
+    </div>
+    <div id='album-media'>
+        <div id='thumbnails'>
+        {#each currentAlbum.media as media}
+        <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
+        {/each}
+        </div>
     </div>
 </div>
 {/if}
