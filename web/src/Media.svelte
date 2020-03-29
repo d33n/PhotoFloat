@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, afterUpdate } from 'svelte';
     import { thumbnailCachePath } from './hashing.js';
     export let media = {};
     export let parent = {};
@@ -7,11 +7,18 @@
 
     let previewImage = '/assets/loading.gif';
 
-    async function loadPreviewImage() {
+    function loadPreviewImage() {
         previewImage = thumbnailCachePath(media, previewSize);
     };
 
     onMount(() => {
+        loadPreviewImage();
+    });
+
+    afterUpdate(() => {
+        /* This happens when in the MediaView when someone
+         * selects a new image from the preview bar below.
+         * Need to trigger an update of the preview image. */
         loadPreviewImage();
     });
 </script>
