@@ -11,7 +11,7 @@
         previewImage = thumbnailCachePath(media, previewSize);
     };
 
-    function getCSSSylte() {
+    function getCSSStyle() {
         if (previewSize == 'smallest') {
             return '';
         }
@@ -36,5 +36,5 @@
 </script>
 
 <a href={'/view/' + parent.path + '/' + media.name}>
-    <img title={media.name} alt={media.name} src={previewImage} style={getCSSSylte()}/>
+    <img title={media.name} alt={media.name} src={previewImage} style={getCSSStyle()}/>
 </a>
