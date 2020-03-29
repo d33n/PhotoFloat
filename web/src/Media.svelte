@@ -6,25 +6,25 @@
     export let previewSize = 'smallest';
 
     let previewImage = '/assets/loading.gif';
+    let cssStyle = '';
 
     function loadPreviewImage() {
         previewImage = thumbnailCachePath(media, previewSize);
     };
 
-    function getCSSStyle() {
+    function updateCSSStyle() {
         if (previewSize == 'smallest') {
-            return '';
+            cssStyle = '';
+        } else if (media.size[0] > media.size[1]) {
+            cssStyle = "width: 100%; height: auto;";
+        } else {
+            cssStyle = "width: auto; height: 100%;";
         }
-
-        if (media.size[0] > media.size[1]) {
-            return "width: 100%; height: auto;";
-        }
-
-        return "width: auto; height: 100%;";
     };
 
     onMount(() => {
         loadPreviewImage();
+        updateCSSStyle();
     });
 
     afterUpdate(() => {
@@ -32,9 +32,10 @@
          * selects a new image from the preview bar below.
          * Need to trigger an update of the preview image. */
         loadPreviewImage();
+        updateCSSStyle();
     });
 </script>
 
 <a href={'/view/' + parent.path + '/' + media.name}>
-    <img title={media.name} alt={media.name} src={previewImage} style={getCSSStyle()}/>
+    <img title={media.name} alt={media.name} src={previewImage} style={cssStyle}/>
 </a>
