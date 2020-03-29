@@ -44,7 +44,7 @@
         position: absolute;
         bottom: 0;
         height: 150px;
-        overflow: scroll;
+        overflow: auto;
         text-align: center;
     }
 </style>
