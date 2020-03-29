@@ -23,19 +23,6 @@
     });
 </script>
 
-<style>
-    #media-thumb {
-        float: left;
-        display: block;
-        text-align: center;
-        font-size: 14px;
-        background-repeat: no-repeat;
-        background-position: top;
-        padding: 0.1em;
-    }
-</style>
-
-<a href={'/view/' + parent.path + '/' + media.name} id='media-thumb'>
+<a href={'/view/' + parent.path + '/' + media.name}>
     <img title={media.name} alt={media.name} src={previewImage}/>
-    <p>{media.name}</p>
 </a>

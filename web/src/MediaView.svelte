@@ -18,13 +18,11 @@
 
     currentAlbumStore.subscribe(value => {
         currentAlbum = value;
-        console.log('Loaded album: ' + JSON.stringify(currentAlbum, null, 2));
         loadMediaFromAlbum();
     });
 
     currentMediaStore.subscribe(value => {
         mediaPath = value;
-        console.log('Attempting to load: ' + mediaPath);
     });
 </script>
 
@@ -42,9 +40,14 @@
     }
     #album-media {
         position: absolute;
+        height: 153px;
+        width: 100%;
         bottom: 0;
-        height: 150px;
-        overflow: auto;
+        top: auto !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 0 !important;
         text-align: center;
     }
 </style>
@@ -54,8 +57,10 @@
 <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
 </div>
 <div id='album-media'>
-{#each currentAlbum.media as media}
-<Media {media} parent={currentAlbum} />
-{/each}
+    <div id='thumbnails'>
+    {#each currentAlbum.media as media}
+    <Media {media} parent={currentAlbum} />
+    {/each}
+    </div>
 </div>
 {/if}
