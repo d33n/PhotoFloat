@@ -33,7 +33,15 @@
     });
 </script>
 
-<div>
+<style>
+    #navbar {
+        height: 1.3em;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+</style>
+
+<div id='navbar'>
 {#each navbar as link}
 {#if link.name != 'Photos'}
 &nbsp»

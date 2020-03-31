@@ -2,7 +2,6 @@
     /* These are here in order for the image style to
      * apply to all children of the AlbumView component */
     :global(#thumbnails) {
-        clear: both;
         line-height: 0;
     }
     :global(#thumbnails img) {
