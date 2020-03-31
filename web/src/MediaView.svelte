@@ -38,13 +38,13 @@
         flex-shrink: 0;
     }
     #album-media {
-        height: 153px;
+        height: 165px;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
         text-align: center;
         flex-shrink: 0;
-        max-height: 153px;
+        max-height: 165px;
     }
     #media-viewer {
         min-height: 0;
