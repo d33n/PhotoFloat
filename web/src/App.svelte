@@ -5,7 +5,6 @@
 	import AlbumViewStore, { albumRoute } from './AlbumViewStore.svelte';
 	import MediaViewStore, { mediaRoute } from './MediaViewStore.svelte';
 	import ErrorPage from './ErrorPage.svelte';
-	import Styles from './Styles.svelte';
 	import Navbar from './Navbar.svelte';
 
 	let currentPage;
