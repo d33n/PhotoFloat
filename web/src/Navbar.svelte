@@ -34,18 +34,39 @@
 </script>
 
 <style>
+    #header {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
     #navbar {
         height: 1.3em;
         flex-grow: 0;
         flex-shrink: 0;
     }
+    #middle-filler {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+    #about {
+        flex-direction: row-reverse;
+        text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px,
+                     rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
+        color: #ffad27;
+    }
 </style>
 
-<div id='navbar'>
-{#each navbar as link}
-{#if link.name != 'Photos'}
-&nbsp»
-{/if}
-<a href={link.path}>{link.name}</a>
-{/each}
+<div id='header'>
+    <div id='navbar'>
+        {#each navbar as link}
+            {#if link.name != 'Photos'}
+            &nbsp»
+            {/if}
+            <a href={link.path}>{link.name}</a>
+        {/each}
+    </div>
+    <div id='middle-filler'/>
+    <div id='about'>
+        Powered by <a href='https://github.com/mremallin/PhotoFloat' target='_blank'>PhotoFloat</a>
+    </div>
 </div>
