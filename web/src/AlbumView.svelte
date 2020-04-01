@@ -32,7 +32,6 @@
 
 <style>
 	#album-view {
-		position: absolute;
 		top: 2.5em;
 		padding: 1em;
 	}
@@ -43,14 +42,11 @@
 </style>
 
 <div id='album-view'>
-	<div id='thumbnails'>
 	{#if currentAlbum.media}
-	<p>Media:</p>
 		{#each currentAlbum.media as media}
 		<Media media={media} parent={currentAlbum}/>
 		{/each}
 	{/if}
-	</div>
 
 	<div id='subalbums'>
 		<p>Subalbums of {currentAlbum.path}:</p>

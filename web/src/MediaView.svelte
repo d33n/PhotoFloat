@@ -51,6 +51,7 @@
         display: flex;
         flex-flow: row;
         justify-content: center;
+        background-color: #111111;
     }
     #media-filler {
         min-width: 0;

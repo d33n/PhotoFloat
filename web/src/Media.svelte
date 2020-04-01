@@ -32,10 +32,8 @@
 
 <style>
     #media {
-        padding: 0.1em;
     }
     #media-selected {
-        padding: 0.1em;
         border: 3px inset yellow;
         box-sizing: border-box;
     }
