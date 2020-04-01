@@ -33,13 +33,9 @@
 <style>
     #media {
         padding: 0.1em;
-        object-fit: scale-down;
-        height: 100%;
     }
     #media-selected {
         padding: 0.1em;
-        object-fit: scale-down;
-        height: 100%;
         border: 3px inset yellow;
         box-sizing: border-box;
     }

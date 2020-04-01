@@ -30,11 +30,12 @@
 
 <style>
     #media-container {
+        padding: 0;
         margin: 0;
         height: 100%;
         display: flex;
         flex-flow: column;
-        justify-content: center;
+        justify-content: flex-start;
         flex-shrink: 0;
     }
     #album-media {
@@ -46,31 +47,44 @@
         flex-shrink: 0;
         max-height: 165px;
     }
+    #media-view-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+    }
+    #media-filler {
+        min-width: 0;
+        min-height: 0;
+        flex-shrink: 1;
+    }
+    #preview-container {
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        flex-flow: row;
+        flex-shrink: 1;
+    }
     #media-viewer {
         min-height: 0;
         flex-shrink: 1;
-        height: 100%;
-        align-items: flex-start;
-        /* Note there is an issue with centering the main photo being viewed.
-         * CSS centering is based off of the size before scaling which
-         * seems to skew the location of the image on screen.
-         * Adding 'display: flex' to this div causes centering to work
-         * but the image now expands past the size of the div... */
-        align-self: center;
     }
 </style>
 
 {#if selectedMedia}
 <div id='media-container'>
     <div id='album-media'>
-        <div id='thumbnails'>
         {#each currentAlbum.media as media}
         <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
         {/each}
-        </div>
     </div>
-    <div id='media-viewer'>
-        <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
+    <div id='media-view-container'>
+        <div id='center-filler'/>
+        <div id='preview-container'>
+            <div id='media-viewer'>
+                <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
+            </div>
+        </div>
+        <div id='center-filler'/>
     </div>
 </div>
 {/if}
