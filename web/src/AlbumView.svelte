@@ -32,6 +32,7 @@
 
 <style>
 	#album-view {
+		display: flex;
 	}
 	#subalbums {
 		clear: both;
