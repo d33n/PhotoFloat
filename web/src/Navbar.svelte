@@ -67,6 +67,7 @@
     </div>
     <div id='middle-filler'/>
     <div id='about'>
-        Powered by <a href='https://github.com/mremallin/PhotoFloat' target='_blank'>PhotoFloat</a>
+        Powered by <a href='https://github.com/mremallin/PhotoFloat' target='_blank'>PhotoFloat</a> and
+        <a href='https://svelte.dev' target='_blank'><img src='/favicon.png' width='16px' height='16px'/></a>
     </div>
 </div>
