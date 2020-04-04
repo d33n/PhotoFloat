@@ -84,13 +84,13 @@
         {/each}
     </div>
     <div id='media-view-container'>
-        <div id='center-filler'/>
+        <div id='media-filler'/>
         <div id='preview-container'>
             <div id='media-viewer'>
                 <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
             </div>
         </div>
-        <div id='center-filler'/>
+        <div id='media-filler'/>
     </div>
 </div>
 {/if}
