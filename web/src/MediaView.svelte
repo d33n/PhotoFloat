@@ -7,15 +7,37 @@
     let currentAlbum = {'media': []};
     let mediaPath = '';
     let selectedMedia = null;
+    let currentMediaIndex = 0;
+    let backLink = '';
+    let nextLink = '';
+
+    function updateLinks() {
+        if (currentMediaIndex == 0) {
+            backLink = '';
+        } else {
+            backLink = '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex-1].name;
+        }
+        if (currentMediaIndex == currentAlbum.media.length-1) {
+            nextLink = '';
+        } else {
+            nextLink = '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex+1].name;
+        }
+    }
 
     function loadMediaFromAlbum() {
         let i = 0;
         for (let m of currentAlbum.media) {
             if (m.name == mediaPath) {
                 selectedMedia = m;
+                currentMediaIndex = i;
+                updateLinks();
             }
             i++;
         }
+    };
+
+    function handleKeyPress(event) {
+
     };
 
     currentAlbumStore.subscribe(value => {
@@ -62,6 +84,8 @@
         min-width: 0;
         min-height: 0;
         flex-shrink: 1;
+        justify-content: center;
+        align-content: center;
     }
     #preview-container {
         min-height: 0;
@@ -74,23 +98,38 @@
         min-height: 0;
         flex-shrink: 1;
     }
+    #next,
+    #back {
+        width: auto;
+        height: 50%;
+        font-size: 4.5em;
+        line-height: 0;
+        font-weight: bold;
+        opacity: 0.35;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
+        filter: alpha(opacity=35);
+}
 </style>
 
 {#if selectedMedia}
-<div id='media-container'>
+<div id='media-container' on:keydown={handleKeyPress}>
     <div id='album-media'>
         {#each currentAlbum.media as media}
         <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
         {/each}
     </div>
     <div id='media-view-container'>
-        <div id='media-filler'/>
+        <div id='media-filler'>
+            <a id="back" href={backLink}><p/>&lsaquo;</a>
+        </div>
         <div id='preview-container'>
             <div id='media-viewer'>
                 <Media media={selectedMedia} parent={currentAlbum} previewSize='largest' />
             </div>
         </div>
-        <div id='media-filler'/>
+        <div id='media-filler'>
+            <a id="next" href={nextLink}><p/>&rsaquo;</a>
+        </div>
     </div>
 </div>
 {/if}
