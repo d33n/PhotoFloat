@@ -39,6 +39,8 @@
     }
 </style>
 
-<a href={'/view/' + parent.path + '/' + media.name}>
-    <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
-</a>
+<div>
+    <a href={'/view/' + parent.path + '/' + media.name}>
+        <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
+    </a>
+</div>

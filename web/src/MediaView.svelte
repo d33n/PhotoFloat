@@ -44,8 +44,10 @@
         overflow-y: hidden;
         white-space: nowrap;
         text-align: center;
+        display: flex;
         flex-shrink: 0;
         max-height: 165px;
+        flex-flow: row nowrap;
     }
     #media-view-container {
         display: flex;
@@ -53,6 +55,9 @@
         justify-content: center;
         background-color: #111111;
     }
+    /* Adding overflow:hidden causes the image to be fixed in the page
+     * but also extends the height of the div, looks like it's trying to
+     * accomodate the <a> tag on the image... */
     #media-filler {
         min-width: 0;
         min-height: 0;
