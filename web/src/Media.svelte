@@ -1,6 +1,8 @@
 <script>
     import { onMount, afterUpdate } from 'svelte';
     import { thumbnailCachePath } from './hashing.js';
+    import MediaOverlay from './MediaOverlay.svelte';
+
     export let media = {};
     export let parent = {};
     export let previewSize = 'smallest';
@@ -32,6 +34,7 @@
 
 <style>
     #media {
+        display: flex;
     }
     #media-selected {
         border: 3px inset yellow;
@@ -40,6 +43,9 @@
 </style>
 
 <div>
+    {#if previewSize == 'largest'}
+        <MediaOverlay />
+    {/if}
     <a href={'/view/' + parent.path + '/' + media.name}>
         <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
     </a>
