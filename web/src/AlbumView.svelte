@@ -22,7 +22,7 @@
 	});
 
 	function generateAlbumPath(album) {
-		let path = '/albums/';
+		let path = '/albumView/';
 		if (currentAlbum.path != '') {
 			path += currentAlbum.path + '/';
 		}

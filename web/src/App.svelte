@@ -31,8 +31,8 @@
 
 	router('*', navigate);
 	router('/', '/albums');
-	router('/albums', albums);
-	router('/albums/:album*', albums);
+	router('/albumView', albums);
+	router('/albumView/:album*', albums);
 	router('/view', '/');
 	router('/view/:media*', media);
 	router('*', notfound);
