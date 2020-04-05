@@ -17,7 +17,6 @@
         display: flex;
         z-index: 1;
         position: absolute;
-        width: 100%;
         padding-top: 10px;
         padding-bottom: 10px;
         padding-right: 10px;
