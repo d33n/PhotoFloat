@@ -25,17 +25,13 @@
         }
     }
 
-    function setSelectedMedia(media) {
-        selectedMedia = media;
-        updateLinks();
-    }
-
     function loadMediaFromAlbum() {
         let i = 0;
         for (let m of currentAlbum.media) {
             if (m.name == mediaPath) {
                 currentMediaIndex = i;
-                setSelectedMedia(m);
+                selectedMedia = m;
+                updateLinks();
             }
             i++;
         }
