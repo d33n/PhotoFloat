@@ -24,20 +24,35 @@
         }
     }
 
+    function setSelectedMedia(media) {
+        selectedMedia = media;
+        updateLinks();
+    }
+
     function loadMediaFromAlbum() {
         let i = 0;
         for (let m of currentAlbum.media) {
             if (m.name == mediaPath) {
-                selectedMedia = m;
                 currentMediaIndex = i;
-                updateLinks();
+                setSelectedMedia(m);
             }
             i++;
         }
     };
 
     function handleKeyPress(event) {
-
+        let key = event.key;
+        if (key == "ArrowLeft" || key == "Left") {
+            if (currentMediaIndex >= 1) {
+                currentMediaIndex -= 1;
+                setSelectedMedia(currentAlbum.media[currentMediaIndex]);
+            }
+        } else if (key == "ArrowRight" || key == "Right") {
+            if (currentMediaIndex < currentAlbum.media.length - 1) {
+                currentMediaIndex += 1;
+                setSelectedMedia(currentAlbum.media[currentMediaIndex]);
+            }
+        }
     };
 
     currentAlbumStore.subscribe(value => {
@@ -111,8 +126,10 @@
 }
 </style>
 
+<svelte:window on:keydown={handleKeyPress}/>
+
 {#if selectedMedia}
-<div id='media-container' on:keydown={handleKeyPress}>
+<div id='media-container'>
     <div id='album-media'>
         {#each currentAlbum.media as media}
         <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
