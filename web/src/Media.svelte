@@ -44,7 +44,7 @@
 
 <div>
     {#if previewSize == 'largest'}
-        <MediaOverlay originalPath={'/albums/' + parent.path + '/' + media.name}/>
+        <MediaOverlay originalPath={'/albums/' + parent.path + '/' + media.name} {media}/>
     {/if}
     <a href={'/view/' + parent.path + '/' + media.name}>
         <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
