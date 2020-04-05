@@ -1,5 +1,5 @@
 <script>
-    import { fade } from 'svelte/transition';
+    import { fade, slide } from 'svelte/transition';
     import { basename } from 'path';
 
     export let originalPath = '';
@@ -103,7 +103,6 @@
         'creator':     {'prefix': 'Photographer', formatter: nopFormatter},
         'caption':     {'prefix': 'Caption', formatter: nopFormatter},
         'keywords':    {'prefix': 'Keywords', formatter: keywordFormatter},
-
     }
 </script>
 
@@ -158,7 +157,7 @@
             </div>
         </div>
         {#if metadataVisible}
-            <div id='overlay-metadata'>
+            <div id='overlay-metadata' transition:slide>
             {#each Object.keys(media) as tag}
                 <table style='width: 100%'>
                     {#if tag in metadataFormatters}
