@@ -1,9 +1,11 @@
 <script>
+    import FullscreenMedia from './FullscreenMedia.svelte';
     import { fade, slide } from 'svelte/transition';
     import { basename } from 'path';
 
     export let originalPath = '';
     export let media = {};
+    export let fullscreenImage = '';
 
     let overlayVisible = false;
     let metadataVisible = false;
@@ -154,6 +156,14 @@
             &nbsp|&nbsp
             <div id='overlay-entry'>
                 <a href={originalPath} download={basename(originalPath)} type={media.mimeType}>Download Original</a>
+            </div>
+            &nbsp|&nbsp
+            <div id='overlay-entry'>
+                <FullscreenMedia let:fullscreenVisible>
+                    {#if fullscreenVisible}
+                        <img title={media.name} alt={media.name} src={fullscreenImage}/>
+                    {/if}
+                </FullscreenMedia>
             </div>
         </div>
         {#if metadataVisible}
