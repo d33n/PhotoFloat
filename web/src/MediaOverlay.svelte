@@ -52,13 +52,9 @@
                     sign = '-';
                 }
 
-                console.log(tz);
                 tz = Math.abs(tz);
-                console.log(tz);
                 let hours = Math.floor(tz);
                 let minutes = Math.floor((tz - hours) * 60);
-                console.log(hours);
-                console.log(minutes);
                 photoDate += sign + leftPad(hours, 2) + ':' + leftPad(minutes, 2);
             }
         }
