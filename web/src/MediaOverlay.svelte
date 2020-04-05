@@ -1,6 +1,8 @@
 <script>
     import { fade } from 'svelte/transition';
+    import { basename } from 'path';
 
+    export let originalPath = '';
     let visible = false;
 
     function mouseEnterHandler(event) {
@@ -16,6 +18,7 @@
     #overlay-box {
         display: flex;
         z-index: 1;
+        width: 100vh;
         position: absolute;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -53,7 +56,7 @@
         </div>
         &nbsp|&nbsp
         <div id='overlay-entry'>
-            <a>Download Original</a>
+            <a href={originalPath} download={basename(originalPath)}>Download Original</a>
         </div>
         <div id='overlay-center'/>
     </div>

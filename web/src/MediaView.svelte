@@ -3,6 +3,7 @@
     import MediaViewStore, { currentMediaStore } from './MediaViewStore.svelte';
     import Media from './Media.svelte';
     import { tick } from 'svelte';
+    import router from 'page';
 
     let currentAlbum = {'media': []};
     let mediaPath = '';
@@ -43,14 +44,12 @@
     function handleKeyPress(event) {
         let key = event.key;
         if (key == "ArrowLeft" || key == "Left") {
-            if (currentMediaIndex >= 1) {
-                currentMediaIndex -= 1;
-                setSelectedMedia(currentAlbum.media[currentMediaIndex]);
+            if (backLink != '') {
+                router(backLink);
             }
         } else if (key == "ArrowRight" || key == "Right") {
-            if (currentMediaIndex < currentAlbum.media.length - 1) {
-                currentMediaIndex += 1;
-                setSelectedMedia(currentAlbum.media[currentMediaIndex]);
+            if (nextLink != '') {
+                router(nextLink);
             }
         }
     };
