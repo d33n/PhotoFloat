@@ -51,9 +51,11 @@
 	</div>
 
 	<div id='subalbums'>
-		<p>Subalbums of {currentAlbum.path}:</p>
-		{#each displayAlbums as album}
-		<Album {album} parent={currentAlbum} path={generateAlbumPath(album)}/>
-		{/each}
+		{#if displayAlbums.length > 0}
+			<p>Albums</p>
+			{#each displayAlbums as album}
+			<Album {album} parent={currentAlbum} path={generateAlbumPath(album)}/>
+			{/each}
+		{/if}
 	</div>
 </div>
