@@ -81,29 +81,29 @@
     };
 
     let metadataFormatters = {
-        'make':        {'prefix': 'Camera Maker', 'formatter': nopFormatter},
-        'model':       {'prefix': 'Camera Model', 'formatter': nopFormatter},
-        'lens':        {'prefix': 'Camera Lens', 'formatter': nopFormatter},
+        'make':        {'prefix': 'Camera Maker'},
+        'model':       {'prefix': 'Camera Model'},
+        'lens':        {'prefix': 'Camera Lens'},
         'date':        {'prefix': 'Time Taken', 'formatter': dateFormatter},
         'size':        {'prefix': 'Resolution', 'formatter': resFormatter},
         'aperture':    {'prefix': 'Aperture', 'formatter': apertureFormatter},
-        'focalLength': {'prefix': 'Focal Length', 'formatter': nopFormatter},
+        'focalLength': {'prefix': 'Focal Length'},
         'subjectDistanceRange':
-            {'prefix': 'Subject Distance Range', 'formatter': nopFormatter},
-        'iso':         {'prefix': 'ISO', formatter: nopFormatter},
-        'fov':         {'prefix': 'FOV', formatter: nopFormatter},
+            {'prefix': 'Subject Distance Range'},
+        'iso':         {'prefix': 'ISO'},
+        'fov':         {'prefix': 'FOV'},
         'shutter':     {'prefix': 'Shutter Speed', formatter: shutterFormatter},
         'exposureProgram':
-                       {'prefix': 'Exposure Program', formatter: nopFormatter},
+                       {'prefix': 'Exposure Program'},
         'exposureCompensation':
-                       {'prefix': 'Exposure Compensation', formatter: nopFormatter},
-        'meteringMode':{'prefix': 'Metering Mode', formatter: nopFormatter},
-        'lightSource': {'prefix': 'Light Source', formatter: nopFormatter},
-        'flash':       {'prefix': 'Flash', formatter: nopFormatter},
-        'orientation': {'prefix': 'Orientation', formatter: nopFormatter},
-        'mimeType':    {'prefix': 'MIME Type', formatter: nopFormatter},
-        'creator':     {'prefix': 'Photographer', formatter: nopFormatter},
-        'caption':     {'prefix': 'Caption', formatter: nopFormatter},
+                       {'prefix': 'Exposure Compensation'},
+        'meteringMode':{'prefix': 'Metering Mode'},
+        'lightSource': {'prefix': 'Light Source'},
+        'flash':       {'prefix': 'Flash'},
+        'orientation': {'prefix': 'Orientation'},
+        'mimeType':    {'prefix': 'MIME Type'},
+        'creator':     {'prefix': 'Photographer'},
+        'caption':     {'prefix': 'Caption'},
         'keywords':    {'prefix': 'Keywords', formatter: keywordFormatter},
     }
 </script>
@@ -173,7 +173,11 @@
                     {#if tag in metadataFormatters}
                     <tr>
                         <th align='left'>{metadataFormatters[tag].prefix}:</th>
-                        <td align='right'>{metadataFormatters[tag].formatter(media[tag])}</td>
+                        {#if metadataFormatters[tag].formatter}
+                            <td align='right'>{metadataFormatters[tag].formatter(media[tag])}</td>
+                        {:else}
+                            <td align='right'>{nopFormatter(media[tag])}</td>
+                        {/if}
                     </tr>
                     {/if}
                 </table>
