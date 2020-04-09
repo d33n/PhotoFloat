@@ -2,13 +2,14 @@
     import { onMount, afterUpdate } from 'svelte';
     import { thumbnailCachePath } from './hashing.js';
     import MediaOverlay from './MediaOverlay.svelte';
+    import router from 'page';
 
     export let media = {};
     export let parent = {};
     export let previewSize = 'smallest';
     export let selected = false;
 
-    let previewImage = '/assets/loading.gif';
+    let previewImage = router.base() + '/assets/loading.gif';
     let cssStyle = 'media';
 
     function loadPreviewImage() {
@@ -44,9 +45,9 @@
 
 <div>
     {#if previewSize == 'largest'}
-        <MediaOverlay originalPath={'/albums/' + parent.path + '/' + media.name} {media} fullscreenImage={previewImage}/>
+        <MediaOverlay originalPath={router.base() + '/albums/' + parent.path + '/' + media.name} {media} fullscreenImage={previewImage}/>
     {/if}
-    <a href={'/view/' + parent.path + '/' + media.name}>
+    <a href={router.base() + '/view/' + parent.path + '/' + media.name}>
         <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
     </a>
 </div>

@@ -1,3 +1,5 @@
+import router from 'page';
+
 export function metadataHashPath (item_path) {
     let path = '';
     if (item_path == '') {
@@ -23,7 +25,7 @@ export function metadataHashPath (item_path) {
 };
 
 export function thumbnailCachePath (media_item, previewSize) {
-    let path = '/cache/thumbs/';
+    let path = router.base() + '/cache/thumbs/';
     path += media_item.hash.substring(0, 2);
     path += '/';
     path += media_item.hash.substring(2);

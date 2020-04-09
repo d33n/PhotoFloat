@@ -7,6 +7,8 @@
 	import ErrorPage from './ErrorPage.svelte';
 	import Navbar from './Navbar.svelte';
 
+	import { basePath } from './config.js';
+
 	let currentPage;
 	let currentPath;
 
@@ -29,14 +31,20 @@
 		next(ctx);
 	}
 
+	/* Router setup */
+	router.base(basePath);
+
+	/* Routing here */
 	router('*', navigate);
-	router('/', '/albums');
+	router('/', '/albumView');
 	router('/albumView', albums);
 	router('/albumView/:album*', albums);
 	router('/view', '/');
 	router('/view/:media*', media);
 	router('*', notfound);
-	router.start();
+
+	/* Start Routing */
+	router.start({'decodeURLComponents': false});
 </script>
 
 <Navbar {currentPath} />

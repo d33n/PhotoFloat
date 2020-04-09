@@ -2,6 +2,7 @@
 	import AlbumViewStore, { childAlbums, currentAlbumStore } from './AlbumViewStore.svelte';
 	import Album from './Album.svelte';
 	import Media from './Media.svelte';
+	import router from 'page';
 
 	let displayAlbums = [];
 	let currentAlbum = {'media': []};
@@ -22,7 +23,7 @@
 	});
 
 	function generateAlbumPath(album) {
-		let path = '/albumView/';
+		let path = router.base() +'/albumView/';
 		if (currentAlbum.path != '') {
 			path += currentAlbum.path + '/';
 		}

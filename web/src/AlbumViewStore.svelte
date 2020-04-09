@@ -1,6 +1,7 @@
 <script context="module">
 	import { writable } from 'svelte/store';
     import { metadataHashPath } from './hashing.js';
+    import router from 'page';
 
 	export const currentAlbumStore = writable({'media': [], 'albums': []});
 	export const childAlbums = writable([]);
@@ -17,7 +18,7 @@
 
 	function loadAlbum(newAlbumPath) {
         let hashedPath = metadataHashPath(newAlbumPath);
-		loadAlbumJSON('/cache/' + hashedPath + '.json');
+		loadAlbumJSON(router.base() + '/cache/' + hashedPath + '.json');
 	};
 
 	export function albumRoute(ctx, next) {

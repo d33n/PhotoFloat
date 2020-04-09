@@ -1,13 +1,14 @@
 <script>
     import { onMount } from 'svelte';
     import { metadataHashPath, thumbnailCachePath } from './hashing.js';
+    import router from 'page';
 
 	export let album = {};
 	export let path = '';
     export let parent = '';
 
     let albumMetadata = {};
-    let albumImage = '/assets/loading.gif';
+    let albumImage = router.base() + '/assets/loading.gif';
 
     async function loadAlbum() {
         let hashed_path = '';
@@ -16,7 +17,7 @@
         } else {
             hashed_path = metadataHashPath(parent.path + "/" + album.path);
         }
-        let album_loader = await fetch ('/cache/' + hashed_path + '.json');
+        let album_loader = await fetch (router.base() + '/cache/' + hashed_path + '.json');
         let albumJSON = await album_loader.json();
         album = albumJSON;
         loadAlbumPreviewImage();
@@ -31,7 +32,7 @@
         if (search_album && search_album.albums.length > 0) {
             let m = null;
             for (let subalbum of search_album.albums) {
-                let subalbumMetadataLoader = await fetch ('/cache/' + metadataHashPath(search_album.path + '/' + subalbum.path) + '.json');
+                let subalbumMetadataLoader = await fetch (router.base() + '/cache/' + metadataHashPath(search_album.path + '/' + subalbum.path) + '.json');
                 let albumJSON = await subalbumMetadataLoader.json()
                 m = await findFirstMedia(albumJSON);
                 if (m != null) {

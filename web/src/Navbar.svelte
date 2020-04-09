@@ -1,5 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte';
+    import router from 'page';
     export let currentPath = '';
 
     let navbar = [];
@@ -9,6 +10,8 @@
 
         navbar = [{'path': '', 'name': 'Photos'}];
 
+        /* Remove the base path from the path to process */
+        path = path.replace(router.base(), "");
         /* Remove the starting '/' and then build the navbar from
          * the rest of the path */
         path = path.substring(1, path.length);
@@ -23,7 +26,7 @@
 
         /* Second pass to append /albums to every link */
         for (let p of navbar) {
-            p.path = '/albumView' + p.path;
+            p.path = router.base() + '/albumView' + p.path;
             p.name = p.name.replace("%20", " ");
         }
     }

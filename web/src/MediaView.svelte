@@ -16,12 +16,12 @@
         if (currentMediaIndex == 0) {
             backLink = '';
         } else {
-            backLink = '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex-1].name;
+            backLink = router.base() + '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex-1].name;
         }
         if (currentMediaIndex == currentAlbum.media.length-1) {
             nextLink = '';
         } else {
-            nextLink = '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex+1].name;
+            nextLink = router.base() + '/view/' + currentAlbum.path.replace("%20", " ") + '/' + currentAlbum.media[currentMediaIndex+1].name;
         }
     }
 
