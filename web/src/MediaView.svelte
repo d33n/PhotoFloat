@@ -91,6 +91,7 @@
      * but also extends the height of the div, looks like it's trying to
      * accomodate the <a> tag on the image... */
     #media-filler {
+        display: flex;
         min-width: 0;
         min-height: 0;
         flex-shrink: 1;
@@ -110,9 +111,9 @@
     }
     #next,
     #back {
-        width: auto;
-        height: 50%;
-        font-size: 4.5em;
+        display: flex;
+        align-items: center;
+        font-size: 10em;
         line-height: 0;
         font-weight: bold;
         opacity: 0.35;
