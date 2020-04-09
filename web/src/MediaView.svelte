@@ -112,6 +112,7 @@
     #next,
     #back {
         display: flex;
+        justify-content: left;
         align-items: center;
         font-size: 10em;
         line-height: 0;
@@ -119,7 +120,7 @@
         opacity: 0.35;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
         filter: alpha(opacity=35);
-}
+    }
 </style>
 
 <svelte:window on:keydown={handleKeyPress}/>
