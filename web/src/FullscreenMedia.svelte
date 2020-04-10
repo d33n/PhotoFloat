@@ -1,6 +1,7 @@
 <!-- Inspiration from: https://dev.to/ilia_mikhailov/let-s-build-a-svelte-fullscreen-component-32c6 -->
 <script>
 	let fullscreenVisible = false;
+	let renderFullscreen = false;
 	let fullscreenContainer = null;
 
 	// boring plain js fullscreen support stuff below
@@ -39,11 +40,16 @@
 		}
 
 		if (fullscreenVisible) {
+			renderFullscreen = false;
 			exitFullscreen();
 		} else {
 			requestFullscreen(fullscreenContainer);
 		}
 		fullscreenVisible = !fullscreenVisible;
+	};
+
+	function readyToDisplay() {
+		renderFullscreen = true;
 	};
 
 </script>
@@ -59,8 +65,8 @@
 </style>
 
 {#if fullscreenSupport}
-<a on:click={fsToggle} bind:this={fullscreenContainer}>Fullscreen
-	{#if fullscreenVisible}
+<a on:click={fsToggle} on:fullscreenchange={readyToDisplay} bind:this={fullscreenContainer}>Fullscreen
+	{#if renderFullscreen}
 		<div id='fullscreen'>
 			<slot {fullscreenVisible}/>
 		</div>
