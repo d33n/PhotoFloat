@@ -57,6 +57,14 @@
                      rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
         color: #ffad27;
     }
+    @media handheld, only screen and (max-width: 600px) {
+        #middle-filler {
+            display: none;
+        }
+        #about {
+            display: none;
+        }
+    }
 </style>
 
 <div id='header'>

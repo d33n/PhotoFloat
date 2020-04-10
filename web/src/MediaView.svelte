@@ -81,6 +81,11 @@
         max-height: 165px;
         flex-flow: row nowrap;
     }
+    @media handheld, only screen and (max-height: 480px) {
+        #album-media {
+            display: none;
+        }
+    }
     #media-view-container {
         display: flex;
         flex-flow: row;
