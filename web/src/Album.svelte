@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { metadataHashPath, thumbnailCachePath } from './hashing.js';
+    import { basename } from 'path';
     import router from 'page';
 
 	export let album = {};
@@ -52,6 +53,7 @@
 
     onMount(() => {
         loadAlbum();
+        console.log(basename(album.path));
     });
 </script>
 
@@ -68,6 +70,6 @@
 </style>
 
 <a href={path} id='album-button'>
-    <img title={album.path} alt={album.path} src={albumImage}/>
-    <p>{album.path}</p>
+    <img title={basename(album.path)} alt={basename(album.path)} src={albumImage}/>
+    <p>{basename(album.path)}</p>
 </a>
