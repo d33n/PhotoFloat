@@ -3,7 +3,7 @@
     import { writable } from 'svelte/store';
     import { dirname, basename } from 'path';
 
-    export let currentMediaStore = writable('');
+    export const currentMediaStore = writable('');
 
     function getAlbumPath(mediaPath) {
         return dirname(mediaPath);
