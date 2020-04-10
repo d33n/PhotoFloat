@@ -1,5 +1,6 @@
 <!-- Inspiration from: https://dev.to/ilia_mikhailov/let-s-build-a-svelte-fullscreen-component-32c6 -->
 <script>
+	import { scale } from 'svelte/transition';
 	let fullscreenVisible = false;
 	let fullscreenCSS = 'hidden';
 	let fullscreenContainer = null;
@@ -81,7 +82,7 @@
 {#if fullscreenSupport}
 <a on:click={fsToggle} on:fullscreenchange={fullscreenChangeHandler} bind:this={fullscreenContainer}>Fullscreen
 	{#if fullscreenVisible}
-		<div id={fullscreenCSS}>
+		<div id={fullscreenCSS} transition:scale>
 			<slot {fullscreenVisible}/>
 		</div>
 	{/if}
