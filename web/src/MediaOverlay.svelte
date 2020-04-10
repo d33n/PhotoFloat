@@ -140,6 +140,10 @@
     #overlay-entry {
         display: flex;
     }
+    #fullscreen-image {
+        height: 100%;
+        width: auto;
+    }
 </style>
 
 <div id='overlay-box' on:mouseenter={mouseEnterHandler} on:mouseleave={mouseLeaveHandler}>
@@ -161,7 +165,7 @@
             <div id='overlay-entry'>
                 <FullscreenMedia let:fullscreenVisible>
                     {#if fullscreenVisible}
-                        <img title={media.name} alt={media.name} src={fullscreenImage}/>
+                        <img title={media.name} alt={media.name} src={fullscreenImage} id='fullscreen-image'/>
                     {/if}
                 </FullscreenMedia>
             </div>
