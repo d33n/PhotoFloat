@@ -2,12 +2,13 @@
 	import AlbumViewStore, { childAlbums, currentAlbumStore } from './AlbumViewStore.svelte';
 	import Album from './Album.svelte';
 	import Media from './Media.svelte';
+	import { tick } from 'svelte';
 	import router from 'page';
 
 	let displayAlbums = [];
 	let currentAlbum = {'media': []};
 
-	childAlbums.subscribe(value => {
+	childAlbums.subscribe(async value => {
 		/* Flush the existing albums on the page when
 		 * they change.
 		 * Seems to be a bug somewhere in here.
@@ -15,6 +16,7 @@
 		 * doesn't always update the first one. Page reload or back button
 		 * don't hit this issue. */
 		displayAlbums = [];
+		await tick();
 		displayAlbums = value;
 	});
 
