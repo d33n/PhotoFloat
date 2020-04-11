@@ -5,6 +5,7 @@
 # Generated files
 web/public/albums
 web/public/cache
+web/public/build
 *.min.js
 *.min.js.map
 *.min.css
