@@ -30,10 +30,9 @@ from the `cache` folder to create a speedy interface. Features include:
 * Photo pre-loading
 * Smooth up and down scaling
 * Metadata display
-* Consistent hash url format
-* Linkable states via ajax urls
+* Consistent url format and linkable states
 * Facebook meta tags for thumbnail and post type
-* Link to original images (can be turned off)
+* Links to original images
 * Optional Google Analytics integration
 * Server-side authentication integration (respects HTTP status codes)
 * A thousand other tweaks here and there...
@@ -122,18 +121,30 @@ Now in your public directory, let's make a folder for cache and a folder for the
 When you're done, fill albums with photos and directories of photos. You can also use symlinks. Run
 the static generator:
 
-    $ photofloat albums
-    $ # OR python -m /path/to/PhotoFloat/scanner -c cache albums
+    $ photofloat -vv -c cache albums
+    $ # OR python -m /path/to/PhotoFloat/scanner -vv -c cache albums
 
-After it finishes, you will be all set. Simply have your web server serve pages out of your public
-directory. You may want to do the scanning step in a cronjob.
+After it finishes, you just have to serve the content. For collections where photos are being added
+continually, consider setting up a cronjob to run the scan periodically.
+
+## Serving the site
+
+To support external links (ie. `http://example.org/view/myalbum/photo1.jpg`), the web server needs
+to internally redirect any URL starting with `/view` to the `web/public/index.html` file. This file
+will then serve the HTML and Javascript that will load the gallery at the correct URL.
+
+For testing locally, running the script`web/serve.py` script should be sufficient.
+
+For a more permanent installation it is recommended to use a dedicated web server such as
+[Nginx](http://nginx.org/) or the [Apache HTTP Server](http://httpd.apache.org/). There are some
+example config files in the `web/configs` directory.
 
 ## Notes on Access Control/Security:
 
 The scanner generates thumbnails for images in the following format: `cache/thumbs/[1st 2 chars of
 hash]/[rest of hash]_[size][square?].jpg`.
 
-While this improves caching for user and reduces the space required on the server, it makes denying
+While this improves caching for users and reduces the space required on the server, it makes denying
 access to specific image thumbnails very hard (without denying access to all the image thumbnails).
 
 Since the names are not something easily-guessable (like an auto-incrementing number, for example),
