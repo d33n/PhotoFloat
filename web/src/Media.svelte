@@ -31,6 +31,17 @@
             cssStyle = 'media';
         }
     });
+
+    function get_parent_path(parent) {
+        /* An extra '/' on the path is a problem for the
+         * root path when the path is ''. Only for children
+         * of the root do we need to append the '/'. */
+        if (parent != undefined && parent.path != '') {
+            return parent.path + '/';
+        }
+
+        return '';
+    }
 </script>
 
 <style>
@@ -45,9 +56,9 @@
 
 <div>
     {#if previewSize == 'largest'}
-        <MediaOverlay originalPath={router.base() + '/albums/' + parent.path + '/' + media.name} {media} fullscreenImage={previewImage}/>
+        <MediaOverlay originalPath={router.base() + '/albums/' + get_parent_path(parent) + media.name} {media} fullscreenImage={previewImage}/>
     {/if}
-    <a href={router.base() + '/view/' + parent.path + '/' + media.name}>
+    <a href={router.base() + '/view/' + get_parent_path(parent) + media.name}>
         <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
     </a>
 </div>

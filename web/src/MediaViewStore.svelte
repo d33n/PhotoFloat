@@ -17,6 +17,11 @@
         }
 
         ctx.params.album = dirname(ctx.params.media);
+        /* The album '.' was seen when loading media from
+         * the root directory. */
+        if (ctx.params.album == '.') {
+            ctx.params.album = '';
+        }
         albumRoute(ctx, next);
     };
 </script>
