@@ -27,7 +27,7 @@
         /* Second pass to append /albums to every link */
         for (let p of navbar) {
             p.path = router.base() + '/albumView' + p.path;
-            p.name = p.name.replace("%20", " ");
+            p.name = p.name.replace(/\%20/g, " ");
         }
     }
 
