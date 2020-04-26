@@ -53,7 +53,6 @@
 
     onMount(() => {
         loadAlbum();
-        console.log(basename(album.path));
     });
 </script>
 
