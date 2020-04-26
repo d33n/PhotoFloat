@@ -114,6 +114,7 @@
     }
     #preview-container {
         min-height: 0;
+        min-width: 0;
         display: flex;
         align-items: center;
         flex-flow: row;
