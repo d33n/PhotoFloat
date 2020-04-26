@@ -41,6 +41,8 @@
         display: flex;
         flex-direction: row;
         width: 100%;
+        min-height: 1.3em;
+        overflow: scroll;
     }
     #navbar {
         height: 1.3em;
