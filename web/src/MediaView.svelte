@@ -66,20 +66,25 @@
         margin: 0;
         height: 100%;
         display: flex;
+        flex-shrink: 0;
         flex-flow: column;
         justify-content: flex-start;
-        flex-shrink: 0;
     }
     #album-media {
-        height: 165px;
         overflow-x: auto;
-        overflow-y: hidden;
         white-space: nowrap;
         text-align: center;
         display: flex;
-        flex-shrink: 0;
+        flex: 0 0 auto;
+    }
+    #album-thumbs {
+        display: flex;
+        overflow-x: auto;
+        min-height: 165px;
         max-height: 165px;
-        flex-flow: row nowrap;
+        height: 165px;
+        margin-top: auto;
+        margin-bottom: 0px;
     }
     @media handheld, only screen and (max-height: 480px) {
         #album-media {
@@ -91,6 +96,10 @@
         flex-flow: row;
         justify-content: center;
         background-color: #111111;
+        flex: 1 1 auto;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
     }
     /* Adding overflow:hidden causes the image to be fixed in the page
      * but also extends the height of the div, looks like it's trying to
@@ -111,8 +120,11 @@
         flex-shrink: 1;
     }
     #media-viewer {
-        min-height: 0;
         flex-shrink: 1;
+        display: flex;
+        flex: 1;
+        max-height: 100%;
+        max-width: 100%;
     }
     #next,
     #back {
@@ -132,10 +144,12 @@
 
 {#if selectedMedia}
 <div id='media-container'>
-    <div id='album-media'>
+    <div id='album-thumbs'>
+        <div id='album-media'>
         {#each currentAlbum.media as media}
         <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
         {/each}
+        </div>
     </div>
     <div id='media-view-container'>
         <div id='media-filler'>

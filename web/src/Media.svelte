@@ -10,7 +10,8 @@
     export let selected = false;
 
     let previewImage = router.base() + '/assets/loading.gif';
-    let cssStyle = 'media';
+    let imgStyle = 'media';
+    let aStyle = 'media';
 
     function loadPreviewImage() {
         previewImage = thumbnailCachePath(media, previewSize);
@@ -26,9 +27,11 @@
          * Need to trigger an update of the preview image. */
         loadPreviewImage();
         if (selected) {
-            cssStyle = 'media-selected';
+            imgStyle = 'media-selected';
+        } else if (previewSize == 'largest') {
+            imgStyle = 'media-preview';
         } else {
-            cssStyle = 'media';
+            imgStyle = 'media';
         }
     });
 
@@ -48,17 +51,19 @@
     #media {
         display: flex;
     }
+    #media-preview {
+        display: flex;
+        object-fit: contain;
+    }
     #media-selected {
         border: 3px inset yellow;
         box-sizing: border-box;
     }
 </style>
 
-<div>
-    {#if previewSize == 'largest'}
-        <MediaOverlay originalPath={router.base() + '/albums/' + get_parent_path(parent) + media.name} {media} fullscreenImage={previewImage}/>
-    {/if}
-    <a href={router.base() + '/view/' + get_parent_path(parent) + media.name}>
-        <img title={media.name} alt={media.name} src={previewImage} id={cssStyle}/>
-    </a>
-</div>
+{#if previewSize == 'largest'}
+    <MediaOverlay originalPath={router.base() + '/albums/' + get_parent_path(parent) + media.name} {media} fullscreenImage={previewImage}/>
+{/if}
+<a href={router.base() + '/view/' + get_parent_path(parent) + media.name} id={aStyle}>
+    <img title={media.name} alt={media.name} src={previewImage} id={imgStyle}/>
+</a>
