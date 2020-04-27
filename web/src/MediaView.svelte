@@ -80,11 +80,12 @@
     #album-thumbs {
         display: flex;
         overflow-x: auto;
-        min-height: 165px;
-        max-height: 165px;
-        height: 165px;
+        min-height: 150px;
+        max-height: 150px;
+        height: 150px;
         margin-top: auto;
         margin-bottom: 0px;
+        padding-bottom: 1.3em;
     }
     @media handheld, only screen and (max-height: 480px) {
         #album-media {
@@ -145,13 +146,6 @@
 
 {#if selectedMedia}
 <div id='media-container'>
-    <div id='album-thumbs'>
-        <div id='album-media'>
-        {#each currentAlbum.media as media}
-        <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
-        {/each}
-        </div>
-    </div>
     <div id='media-view-container'>
         <div id='media-filler'>
             <a id="back" href={backLink}><p/>&lsaquo;</a>
@@ -163,6 +157,13 @@
         </div>
         <div id='media-filler'>
             <a id="next" href={nextLink}><p/>&rsaquo;</a>
+        </div>
+    </div>
+    <div id='album-thumbs'>
+        <div id='album-media'>
+        {#each currentAlbum.media as media}
+        <Media {media} parent={currentAlbum} selected={media.name == selectedMedia.name}/>
+        {/each}
         </div>
     </div>
 </div>
