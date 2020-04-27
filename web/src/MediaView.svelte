@@ -87,11 +87,6 @@
         margin-bottom: 0px;
         padding-bottom: 1.3em;
     }
-    @media handheld, only screen and (max-height: 480px) {
-        #album-media {
-            display: none;
-        }
-    }
     #media-view-container {
         display: flex;
         flex-flow: row;
@@ -139,6 +134,24 @@
         opacity: 0.35;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
         filter: alpha(opacity=35);
+    }
+    @media handheld, only screen and (max-height: 640px) {
+        #album-media {
+            display: none;
+        }
+        #media-viewer {
+        }
+        #album-thumbs {
+            display: none;
+        }
+    }
+    @media handheld, only screen and (max-width: 480px) {
+        #next,
+        #back {
+            font-size: 5em;
+            margin-left: 1em;
+            margin-right: 1em;
+        }
     }
 </style>
 

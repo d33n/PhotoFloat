@@ -50,10 +50,15 @@
 <style>
     #media {
         display: flex;
+        object-fit: contain;
+        min-width: 0;
+        min-height: 0;
     }
     #media-preview {
         display: flex;
         object-fit: contain;
+        min-width: 0;
+        min-height: 0;
     }
     #media-selected {
         border: 3px inset yellow;

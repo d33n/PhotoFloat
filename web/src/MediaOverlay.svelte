@@ -144,6 +144,11 @@
         height: 100%;
         width: auto;
     }
+    @media handheld, only screen and (max-width: 480px) {
+        #overlay-box {
+            display: none;
+        }
+    }
 </style>
 
 <div id='overlay-box' on:mouseenter={mouseEnterHandler} on:mouseleave={mouseLeaveHandler}>
